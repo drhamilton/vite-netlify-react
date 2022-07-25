@@ -1,45 +1,30 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Switch, Route } from "wouter"
 
-function App() {
-  const [count, setCount] = useState(0)
+import Home from "./pages/Home/index.jsx";
+import Cart from "./pages/Cart/index.jsx";
+import Header from "./components/Header/index.jsx";
+import Footer from "./components/Footer/index.jsx";
+import SignIn from "./pages/SignIn/index.jsx";
+import Register from "./pages/Register/index.jsx";
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
-
-export default App
+export default () => 
+  <>
+    <Header />
+    <main>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/sign-in">
+          <SignIn />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+      </Switch>
+    </main>
+    <Footer />
+  </>
